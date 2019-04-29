@@ -2,9 +2,11 @@
 A voting app, specially designed for use during EESTEC's General Meetings. Currently under development from the EESTEC LC Thessaloniki's
 IT Team.
 
+
+
 ## FAQ
 ### Why is this a public repository?
-Due to the nature of this project, the code is and will remain open to the public. This is to guarantee the transperancy and 
+Due to the nature of this project, the code is and will remain open to the public. This is to guarantee the transparency and 
 reliability of every release of this application, which is of uppermost importance, since we plan on providing this app for use
 by our LC (Local Commitment) during its voting procedures.
 
@@ -31,3 +33,9 @@ GUI design and a certain level of programming logic complexity.
 Finally, this project is very exciting for us, since we have the unique opportunity to actually test our application throughout
 its development stages in actual General Meetings of our LC, thus getting immediate user feedback and going back to improving 
 our code without losing any time!
+
+
+## Do you use a specific code style?
+Yes, Google Java Style is used, in order to achieve uniformity and keep the code clean and readable.
+
+
