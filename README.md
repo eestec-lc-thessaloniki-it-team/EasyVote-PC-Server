@@ -24,7 +24,7 @@ so it will have some major differences compared to existing applications. Some m
 others might find them needless or even useless. What is important for us, is that they serve EESTEC the best 
 way possible.
 
-Now having said that, another important reason our IT Team decided to work on this project is that it will give us the chance to
+Now, having said that, another important reason our IT Team decided to work on this project is that it will give us the chance to
 learn a lot of interesting things, such as writing code for different platforms, the basic principles of socket programming, 
 GUI design and a certain level of programming logic complexity.
 
