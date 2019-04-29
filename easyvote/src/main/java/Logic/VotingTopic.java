@@ -5,14 +5,20 @@ import java.util.List;
 
 public class VotingTopic {
 
-    private String topicDescription;
+  private String topicDescription;
 
-    // Open ballot field?
+  // Open ballot field?
 
-    // Determines the type of vote that will be used for the topic,
-    // for example: "YES/NO"
-    private String typeOfVote;
-    private List<IndividualVote> votes = new ArrayList<IndividualVote>();
+  // Determines the type of vote that will be used for the topic,
+  // for example: "YES/NO"
+  private String typeOfVote;
+
+  // List containing the "IndividualVote" objects of all the voters that have
+  // participated in this topic voting procedure
+  private List<IndividualVote> votes = new ArrayList<IndividualVote>();
+
+  // Used to determine if the topic passed or not, according to the votes
+  private boolean passed;
 
 
 }
