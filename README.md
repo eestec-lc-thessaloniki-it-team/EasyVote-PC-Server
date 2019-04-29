@@ -20,7 +20,7 @@ Currently, our plan is to release a Voting Management Server Application for Win
 Android/Windows/Linux.
 
 
-## There are other voting applications out there that already do the "job" efficiently, why are you developing your own?
+### There are other voting applications out there that already do the "job" efficiently, why are you developing your own?
 Nice question! Well, to begin with, this application is designed around EESTEC General Meetings' needs and strict requirements,
 so it will have some major differences compared to existing applications. Some may find these differences really awesome, while 
 others might find them needless or even useless. What is important for us, is that they serve EESTEC the best 
@@ -35,7 +35,7 @@ its development stages in actual General Meetings of our LC, thus getting immedi
 our code without losing any time!
 
 
-## Do you use a specific code style?
+### Do you use a specific code style?
 Yes, Google Java Style is used, in order to achieve uniformity and keep the code clean and readable.
 
 
