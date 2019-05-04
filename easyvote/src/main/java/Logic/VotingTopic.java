@@ -20,5 +20,14 @@ public class VotingTopic {
   // Used to determine if the topic passed or not, according to the votes
   private boolean passed;
 
+  public VotingTopic() {
+	  //A random reference - example
+	  String type = TypeOfVote.ROP.toString();
+  }
+  
+  
+  private enum TypeOfVote{
+	  ROP, ELECTION;
+  }
 
 }
