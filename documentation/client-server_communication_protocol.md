@@ -41,5 +41,51 @@
 		the client is considered unavailable/unreachable and is immediately disconnected from the voting application.
 		Otherwise, if a proper heartbeat response is received, the client is considered active and fully functional, thus no
 		further action is taken.
+
+
+
+- Protocol for setting a new session to the clients:
+	1) Server sends a JSON request:
+		- Type of request: SET_SESSION
+		- Data: SESSION_NAME
+	2) Client sends a JSON response:
+		- Status is either "success", or "error" if an unexpected error occurs.
 		
+	
+
+- Protocol for setting the voting topic to the clients:
+	1) Server sends a JSON request:
+		- Type of request: SET_VOTING_TOPIC
+		- Data: 
+			- TYPE_OF_VOTE // Can be a Yes/No type of vote, a multiple choice vote etc.
+			- VOTING_TOPIC  // The voting topic title
+			
+			- (Optional) VOTE_CHOICES // In the case of multiple choice votes, it contains the choices
+									  // that will be made available to the client.
+			
+	2) Client sends a JSON response:
+		- Status is either "success", or "error" if an unexpected error occurs.
+
+
+
+- Protocol for sending Client's vote to the Server:
+	1) Client sends a JSON request:
+		- Type of request: REGISTER_VOTE
+		- Data: VOTE
+		
+	2) Server sends a JSON response:
+		- Status is either "success", or "error" if an unexpected error occurs.
+		
+		
+
+- Protocol for informing the Server that the Client is preparing to terminate his connection:
+	1) Client sends a JSON request:
+		- Type of request: TERMINATE_CONNECTION
+		- Data: // No Data necessary
+	
+	2) Server sends a JSON response:
+		- Status is either "success", or "error" if an unexpected error occurs.
+		
+		
+	
 
