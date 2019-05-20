@@ -5,6 +5,8 @@ IT Team.
 This repository contains the Computer Based Server of the EasyVote application.
 
 
+
+
 ## FAQ
 ### Why is this a public repository?
 Due to the nature of this project, the code is and will remain open to the public. This is to guarantee the transparency and 
