@@ -12,6 +12,5 @@
   <groupId>org.apache.easyvote</groupId>
   <artifactId>easyvote</artifactId>
   <version>1.0-SNAPSHOT</version>
-
-
+  
 </project>
