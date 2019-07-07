@@ -2,6 +2,7 @@
 A voting app, specially designed for use during EESTEC's General Meetings. Currently under development from the EESTEC LC Thessaloniki's
 IT Team.
 
+This repository contains the Computer Based Server of the EasyVote application.
 
 
 ## FAQ
