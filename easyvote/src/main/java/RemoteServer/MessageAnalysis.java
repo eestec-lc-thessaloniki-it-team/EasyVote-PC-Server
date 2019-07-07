@@ -1,3 +1,5 @@
+package RemoteServer;
+
 //A library for JSON from http://www.java2s.com/Code/Jar/j/Downloadjsonsimple111jar.htm
 import org.json.JSONObject;
 
@@ -31,6 +33,7 @@ public class MessageAnalysis {
             //TODO: Handle wrong JSON message
         }
     }
+    */
 
     //Analyses a request message
     private void analyseRequest(){
@@ -49,10 +52,10 @@ public class MessageAnalysis {
                 //TODO: Handle wrong JSON message
         }
     }
-    */
+    
 
     //Analyses a response Message
-    private void analyseResponse(){
+    private void analyeResponse(){
         String status = message.get("status").toString();
         switch (status){
             case "success":
