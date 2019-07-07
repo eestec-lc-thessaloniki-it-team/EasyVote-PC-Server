@@ -1,5 +1,8 @@
 package RemoteServer;
 
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class Server {
     void sendMessage() {
         // TODO: implement me!
@@ -20,9 +23,9 @@ public class Server {
                 //Accept incoming connections
                 Socket client = server.accept();
                 //TODO: Start new Thread
-            }catch (IOException ex){
-                ex.printStackTrace();
             }
+        }catch(Exception ex) {
+        	ex.printStackTrace();
         }
     }
 }

@@ -1,8 +1,9 @@
 //A library for JSON from http://www.java2s.com/Code/Jar/j/Downloadjsonsimple111jar.htm
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
+
 
 /*
- * A class that analyses a JSON message
+ * A class that analyzes a JSON message
  */
 public class MessageAnalysis {
 
@@ -16,6 +17,7 @@ public class MessageAnalysis {
     }
 
     //Determines if the message is a request or a response and calls the necessary functions
+    /*
     public void analyseMessage(){
 
         if(message.containsKey("request")){
@@ -47,6 +49,7 @@ public class MessageAnalysis {
                 //TODO: Handle wrong JSON message
         }
     }
+    */
 
     //Analyses a response Message
     private void analyseResponse(){
