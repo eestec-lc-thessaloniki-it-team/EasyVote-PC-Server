@@ -9,35 +9,33 @@ import org.json.JSONObject;
  */
 public class MessageAnalysis {
 
-    private JSONObject message;
+    private JSONObject json_message;
 
     /***
-     * @param message The JSON message the class has to analyse
+     * @param message The JSON message the class has to analyze
      * */
-    public MessageAnalysis(JSONObject message){
-        this.message = message;
+    public MessageAnalysis(String message){
+        json_message = new JSONObject(message);
     }
 
     //Determines if the message is a request or a response and calls the necessary functions
-    /*
     public void analyseMessage(){
 
-        if(message.containsKey("request")){
+        if(json_message.has("request")){
             //It's a request JSON Message
             analyseRequest();
 
-        }else if(message.containsKey("status")){
+        }else if(json_message.has("status")){
             //It's a response JSON Message
-            analyseResponse();
+            analyzeResponse();
         }else {
             //TODO: Handle wrong JSON message
         }
     }
-    */
 
-    //Analyses a request message
+    //Analyzes a request message
     private void analyseRequest(){
-        String request = message.get("request").toString();
+        String request = json_message.get("request").toString();
         switch (request){
             case "INITIALIZE_NEW_CONNECTION":
                 System.err.println("NEW CONNECTION");
@@ -54,9 +52,9 @@ public class MessageAnalysis {
     }
     
 
-    //Analyses a response Message
-    private void analyeResponse(){
-        String status = message.get("status").toString();
+    //Analyzes a response Message
+    private void analyzeResponse(){
+        String status = json_message.get("status").toString();
         switch (status){
             case "success":
                 System.err.println("SUCCESS");

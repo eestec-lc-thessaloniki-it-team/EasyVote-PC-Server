@@ -12,14 +12,12 @@ public class Server{
 	
 	class ClientHandler implements Runnable{
 		
-		private Socket socket;
 		private boolean cont;
 		private int id;
 		private DataInputStream input;
 		private DataOutputStream output;
 		
 		public ClientHandler(Socket socket, int id) throws Exception{
-			this.socket = socket;
 			this.id = id;
 			cont = true;
 			input = new DataInputStream(socket.getInputStream());
@@ -51,6 +49,7 @@ public class Server{
 					if(input.available()>0) {
 						byte[] data = receive();
 						String message = new String(data);
+						MessageAnalysis messageAnalysis = new MessageAnalysis(message);
 						//TODO: call message analysis
 					}
 				}
@@ -100,6 +99,7 @@ public class Server{
 					connections.add(clientHandler);
 					clientHandler.run();
 				}
+				server.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
