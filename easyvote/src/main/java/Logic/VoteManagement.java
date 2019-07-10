@@ -2,6 +2,7 @@ package Logic;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Properties;
 
 public class VoteManagement {
 	
@@ -101,9 +102,11 @@ public class VoteManagement {
 		}
 		
 		
-		
+		Properties prop = new Properties();
 		
 
 	}
+	
+	
 
 }
