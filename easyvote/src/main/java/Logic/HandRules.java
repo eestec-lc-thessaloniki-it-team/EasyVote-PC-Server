@@ -26,6 +26,7 @@ public class HandRules {
 
 		private int priority;
 		private int id;
+		private boolean pass = false;
 
 		public HandRuleRequest(String handRule, int id) {
 
@@ -47,6 +48,7 @@ public class HandRules {
 			this.id = id;
 
 		}
+		
 
 		public int getPriority() {
 			return priority;
@@ -54,6 +56,10 @@ public class HandRules {
 
 		public int getId() {
 			return id;
+		}
+		
+		public void setPass(boolean pass) {
+			this.pass = pass;
 		}
 
 	}
