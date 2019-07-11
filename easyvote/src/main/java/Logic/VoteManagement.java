@@ -23,24 +23,15 @@ public class VoteManagement {
     requests.sort(handRules.comparator);
   }
 
-  //Change the attribute of the request based on user's option
-  public void changeHandRuleAttribute(String newAttr, int id) {
+  // Delete this hand rule request
+  // whenever the client thinks there's no need for it
+  public void passHandRule(int id) {
 
-    switch (newAttr) {
-      case "FINISH_SPEAKING_TURN":
-        // Remove the first element
-        requests.remove(0);
-        break;
-      case "PASS_SPEAKING_TURN":
-        for (int i = 0; i < requests.size(); i++) {
-          if (requests.get(i).getId() == id) {
-            //Remove the requested element as desired
-            requests.remove(i);
-          }
-        }
-      default:
-        System.out.println("Something went wrong.");
-        break;
+    for (int i = 0; i < requests.size(); i++) {
+      if (requests.get(i).getId() == id) {
+        // Remove the requested element as desired
+        requests.remove(i);
+      }
     }
   }
 
