@@ -6,48 +6,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
-public class Database { 
+public class Database {
 
-    Connection conn;
+  Connection conn;
 
-    //Properties for connection
-    Properties connProperties = new Properties();
-    private String jdbcURL = "jdbc:mysql://localhost:3306"; //Might need to change per OS
-    
-    private String username;
-    private String password;
+  // Properties for connection
+  Properties connProperties = new Properties();
+  private String jdbcURL = "jdbc:mysql://localhost:3306?userTimezone=true&serverTimezone=UTC"; // Might need to change per OS
 
-    public Database(String username, String password) {
-        this.username = username;
-        this.password = password;
+  private String username = "tutorialuser";
+  private String password = "tutorialpassword";
+
+  // Connect to the database
+  public Connection getConnection() {
+
+    connProperties.put("user", username);
+    connProperties.put("password", password);
+    try {
+      conn = DriverManager.getConnection(jdbcURL, connProperties);
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
-    //Connect to the database
-    private Connection getConnection() {
+    return conn;
+  }
 
-        connProperties.put("user", username);
-        connProperties.put("password", password);
-        try {
-            conn = DriverManager.getConnection(jdbcURL, connProperties);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return conn;
-    }
-    
-    private void createTable() throws SQLException {
-        String sqlCreate = "CREATE TABLE IF NOT EXISTS " + "onoma"
-                + "  (brand           VARCHAR(10),"
-                + "   year            INTEGER,"
-                + "   number          INTEGER,"
-                + "   value           INTEGER,"
-                + "   card_count           INTEGER,"
-                + "   player_name     VARCHAR(50),"
-                + "   player_position VARCHAR(20))";
+  public void createTable() throws SQLException {
+    String sqlCreate =
+        "CREATE TABLE IF NOT EXISTS " + "users" + "(id INT AUTO_INCREMENT," + "name VARCHAR(20))";
 
-        Statement stmt = conn.createStatement();
-        stmt.execute(sqlCreate);
-    }
+    Statement stmt = conn.createStatement();
+    stmt.execute(sqlCreate);
+  }
+  
+  
 
 }
