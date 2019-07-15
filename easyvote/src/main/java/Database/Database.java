@@ -11,20 +11,14 @@ public class Database {
 
   private Connection conn;
 
-  // Properties for connection
-  Properties connProperties = new Properties();
   // Might need to change per OS
   private String jdbcURL = "jdbc:mysql://localhost:3306?userTimezone=true&serverTimezone=UTC";
-  private String username = "tutorialuser";
-  private String password = "tutorialpassword";
 
   // Connect to the database
   public Connection getConnection() {
 
-    connProperties.put("user", username);
-    connProperties.put("password", password);
     try {
-      conn = DriverManager.getConnection(jdbcURL, connProperties);
+      conn = DriverManager.getConnection(jdbcURL, "root", "");
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -67,7 +61,6 @@ public class Database {
       rs.next();
       
       return rs.getString("name");
-
       
     } catch (SQLException e) {
       e.printStackTrace();
@@ -76,10 +69,5 @@ public class Database {
     return null;
 
   }
-
-  
-  
-
-
 
 }
