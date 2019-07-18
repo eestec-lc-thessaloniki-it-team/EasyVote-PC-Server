@@ -4,6 +4,7 @@ import java.sql.*;
 
 public class Database {
 
+  
   private Connection conn;
 
   // Might need to change per OS
