@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.BottomNavigationButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,49 +14,128 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="704.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <VBox layoutX="370.0" layoutY="92.0" prefHeight="112.0" prefWidth="256.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="258.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="58.07552146911621">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <TextField prefWidth="186.0" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="258.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type:" wrappingWidth="58.07552146911621">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                        </Text>
-                        <ChoiceBox prefHeight="28.0" prefWidth="186.0" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <ListView layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button layoutX="233.0" layoutY="128.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="&lt;-- Add" textAlignment="CENTER" />
-            <ButtonBar layoutX="440.0" layoutY="346.0" prefHeight="40.0" prefWidth="186.0">
-               <buttons>
-                  <BottomNavigationButton text="&lt;Previous" />
-                  <BottomNavigationButton text="Next &gt;" />
-               </buttons>
-            </ButtonBar>
-            <Button layoutX="233.0" layoutY="248.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Remove --&gt;" textAlignment="CENTER" />
-            <Text layoutX="20.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Session:" textAlignment="CENTER" wrappingWidth="600.9830722808838">
+            <Text layoutX="20.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Topics to the Sessions:" textAlignment="CENTER" wrappingWidth="600.9830722808838">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
+            <HBox layoutX="11.0" layoutY="61.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Registered Sessions:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ListView prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="348.0" prefWidth="274.0" spacing="15.0">
+                     <children>
+                        <VBox prefHeight="45.0" prefWidth="274.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Topic Title:" textAlignment="CENTER" wrappingWidth="273.25390625">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="147.0" prefWidth="274.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Topic Description:" textAlignment="CENTER" wrappingWidth="273.25390625">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Text>
+                              <TextArea prefHeight="117.0" prefWidth="274.0" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type of Vote:" textAlignment="CENTER" wrappingWidth="273.25390625">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <RadioButton mnemonicParsing="false" prefHeight="33.0" prefWidth="274.0" text="Yes/No/Abstain" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton mnemonicParsing="false" prefHeight="33.0" prefWidth="274.0" text="Multiple Choice" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </RadioButton>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Αdd Choice:" textAlignment="CENTER" wrappingWidth="273.9814453125">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <TextField prefHeight="25.0" prefWidth="237.0" />
+                                    <Button mnemonicParsing="false" text="Add" />
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Choices:" textAlignment="CENTER" wrappingWidth="273.9814453125">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                              <ListView maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="274.0" />
+                              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="Remove" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Topics for selected:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <ListView prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
       </children>
     </AnchorPane>
+      <ButtonBar prefHeight="40.0" prefWidth="186.0">
+         <buttons>
+            <BottomNavigationButton text="&lt; Previous" />
+            <BottomNavigationButton text="Next &gt;" />
+         </buttons>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </ButtonBar>
   </children>
 </VBox>
