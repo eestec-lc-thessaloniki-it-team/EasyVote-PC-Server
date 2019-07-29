@@ -1,4 +1,4 @@
-package Logic;
+package main.java.org.easyvote.logic;
 
 // Class representing an individual voting session held during a General Meeting
 public class Session {

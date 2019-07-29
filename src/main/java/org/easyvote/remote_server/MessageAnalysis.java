@@ -1,4 +1,4 @@
-package RemoteServer;
+package org.easyvote.remote_server;
 
 //A library for JSON from http://www.java2s.com/Code/Jar/j/Downloadjsonsimple111jar.htm
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package RemoteServer;
+package org.easyvote.remote_server;
 
 import java.io.DataOutputStream;
 import java.io.DataInputStream;
