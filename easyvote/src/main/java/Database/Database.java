@@ -34,19 +34,31 @@ public class Database {
   }
 
 
-  // Does what it says
-  public void createTable() {
-    String command = "CREATE TABLE IF NOT EXISTS eestecUsers(id INT AUTO_INCREMENT PRIMARY KEY,"
-        + "name VARCHAR(20))";
+	// Does what it says
+	public void createTable() {
+		
+		String members = "CREATE TABLE IF NOT EXISTS members(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20))";
+		
+		String total = "CREATE TABLE IF NOT EXISTS total ( topic VARCHAR(20) PRIMARY KEY, "
+				+ "type_of_vote VARCHAR(10) NOT NULL, " + "counts INT NOT NULL); ";
 
-    try {
-      Statement statement = conn.createStatement();
-      statement.executeUpdate(command);
-    } catch (SQLException e) {
-      e.printStackTrace();
-    }
+		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( " + "id_vote INT AUTO_INCREMENT PRIMARY KEY, "
+				+ "id_member INT, " + "name_member VARCHAR(20), " + "vote VARCHAR(20) NOT NULL, "
+				+ "type_of_vote VARCHAR(10) NOT NULL, " + "topic VARCHAR(20) NOT NULL, "
+				+ "FOREIGN KEY (id_member) REFERENCES members(id),"
+				+ "FOREIGN KEY (topic) REFERENCES total(topic) )";
+				
+		try {
+			Statement statement = conn.createStatement();
+		
+			statement.executeUpdate(members);
+			statement.executeUpdate(total);
+			statement.executeUpdate(allVotes);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-  }
+	}
 
   // Insert a new person in the database
   public void insertIntoDatabase(String name) {
