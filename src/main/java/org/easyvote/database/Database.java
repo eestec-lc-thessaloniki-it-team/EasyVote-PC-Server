@@ -1,4 +1,4 @@
-package Database;
+package org.easyvote.database;
 
 import java.sql.*;
 
