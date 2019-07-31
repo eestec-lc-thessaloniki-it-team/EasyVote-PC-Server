@@ -1,4 +1,4 @@
-package Database;
+package org.easyvote.database;
 
 import java.sql.*;
 
@@ -38,12 +38,12 @@ public class Database {
 	public void createTable() {
 		String members = "CREATE TABLE IF NOT EXISTS members(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20))";
 		String total = "CREATE TABLE IF NOT EXISTS total ( topic VARCHAR(20) PRIMARY KEY, "
-				+ "type_of_vote VARCHAR(10) NOT NULL, count INT NULL); ";
+				+ "type_of_vote VARCHAR(10) NOT NULL, " + "count INT NULL); ";
 
-		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( id_vote INT AUTO_INCREMENT PRIMARY KEY, "
-				+ "id_member INT, name_member VARCHAR(20), vote VARCHAR(20) NOT NULL, "
-				+ "type_of_vote VARCHAR(10) NOT NULL, topic VARCHAR(20) NOT NULL, "
-				+ "FOREIGN KEY (id_member) REFERENCES members(id),FOREIGN KEY (topic) REFERENCES total(topic) )";
+		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( " + "id_vote INT AUTO_INCREMENT PRIMARY KEY, "
+				+ "id_member INT, " + "name_member VARCHAR(20), " + "vote VARCHAR(20) NOT NULL, "
+				+ "type_of_vote VARCHAR(10) NOT NULL, " + "topic VARCHAR(20) NOT NULL, "
+				+ "FOREIGN KEY (id_member) REFERENCES members(id)," + "FOREIGN KEY (topic) REFERENCES total(topic) )";
 
 		try {
 			Statement statement = conn.createStatement();

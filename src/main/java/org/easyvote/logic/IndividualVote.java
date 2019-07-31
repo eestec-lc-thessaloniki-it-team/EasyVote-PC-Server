@@ -1,4 +1,4 @@
-package Logic;
+package main.java.org.easyvote.logic;
 
 public class IndividualVote {
 

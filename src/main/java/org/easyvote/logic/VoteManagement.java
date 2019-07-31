@@ -1,7 +1,7 @@
-package Logic;
+package main.java.org.easyvote.logic;
 
 import java.util.ArrayList;
-import Logic.HandRules.HandRuleRequest;
+import main.java.org.easyvote.logic.HandRules.HandRuleRequest;
 
 public class VoteManagement {
 
