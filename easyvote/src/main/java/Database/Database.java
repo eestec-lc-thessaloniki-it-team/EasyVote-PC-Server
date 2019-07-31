@@ -61,8 +61,8 @@ public class Database {
 	}
 
   // Insert a new person in the database
-  public void insertIntoDatabase(String name) {
-    String command = "INSERT INTO eestecUsers(name) VALUES('" + name + "');";
+  public void insertUser(String name) {
+    String command = "INSERT INTO members(name) VALUES('" + name + "');";
 
     try {
       Statement statement = conn.createStatement();
@@ -76,7 +76,7 @@ public class Database {
   // Give an id and get the real name of the client
   public String getName(int id) {
 
-    String command = "SELECT name FROM eestecUsers WHERE id=" + id;
+    String command = "SELECT name FROM members WHERE id=" + id;
 
     try {
       Statement statement = conn.createStatement();
