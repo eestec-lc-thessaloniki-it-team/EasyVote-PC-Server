@@ -1,7 +1,7 @@
-package main.java.org.easyvote.logic;
+package org.easyvote.logic;
 
 import java.util.ArrayList;
-import main.java.org.easyvote.logic.HandRules.HandRuleRequest;
+import org.easyvote.logic.HandRules.HandRuleRequest;
 
 public class VoteManagement {
 
@@ -34,6 +34,4 @@ public class VoteManagement {
       }
     }
   }
-
-
 }
