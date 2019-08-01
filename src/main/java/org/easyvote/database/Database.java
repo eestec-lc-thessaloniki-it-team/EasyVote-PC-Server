@@ -36,19 +36,17 @@ public class Database {
 
 	// Does what it says
 	public void createTable() {
+		// All members of the meeting
 		String members = "CREATE TABLE IF NOT EXISTS members(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20))";
-		String total = "CREATE TABLE IF NOT EXISTS total ( topic VARCHAR(20) PRIMARY KEY, "
-				+ "type_of_vote VARCHAR(10) NOT NULL, " + "count INT NULL); ";
 
-		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( " + "id_vote INT AUTO_INCREMENT PRIMARY KEY, "
-				+ "id_member INT, " + "name_member VARCHAR(20), " + "vote VARCHAR(20) NOT NULL, "
-				+ "type_of_vote VARCHAR(10) NOT NULL, " + "topic VARCHAR(20) NOT NULL, "
-				+ "FOREIGN KEY (id_member) REFERENCES members(id)," + "FOREIGN KEY (topic) REFERENCES total(topic) )";
+		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( id_vote INT AUTO_INCREMENT PRIMARY KEY, "
+				+ "id_member INT, name_member VARCHAR(20), vote VARCHAR(20) NOT NULL, "
+				+ "type_of_vote VARCHAR(10) NOT NULL, session VARCHAR(20) NOT NULL, topic VARCHAR(25) NOT NULL, "
+				+ "FOREIGN KEY (id_member) REFERENCES members(id) )";
 
 		try {
 			Statement statement = conn.createStatement();
 			statement.executeUpdate(members);
-			statement.executeUpdate(total);
 			statement.executeUpdate(allVotes);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,28 +54,19 @@ public class Database {
 
 	}
 
-	// Does whta it says
-	public void insertVote(String vote, String typeOfVote, String topic) {
+	public void insertVote(String vote, String typeOfVote, String session, String topic) {
 
 		try {
 
-			// Insert it if not exists
-			// It must exist (before entering the vote) because it has a foreign key
-			String insertTopic = "INSERT INTO total (topic, type_of_vote) SELECT * FROM (SELECT ?, ?) AS tmp WHERE NOT EXISTS ( SELECT topic FROM total WHERE topic = ?) LIMIT 1;";
+			String insertVote = "INSERT INTO all_votes(vote, type_of_vote, session, topic) VALUES(?, ?, ?, ?)";
 
-			String insertVote = "INSERT INTO all_votes(vote, type_of_vote, topic) VALUES(?, ?, ?)";
-
-			PreparedStatement statement = conn.prepareStatement(insertTopic);
-			statement.setString(1, topic);
-			statement.setString(2, typeOfVote);
-			statement.setString(3, topic);
-			statement.executeUpdate();
-
-			statement = conn.prepareStatement(insertVote);
+			PreparedStatement statement = conn.prepareStatement(insertVote);
 			statement.setString(1, vote);
 			statement.setString(2, typeOfVote);
-			statement.setString(3, topic);
+			statement.setString(3, session);
+			statement.setString(4, topic);
 			statement.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
