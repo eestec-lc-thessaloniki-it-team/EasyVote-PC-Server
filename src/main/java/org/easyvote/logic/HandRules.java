@@ -1,4 +1,4 @@
-package main.java.org.easyvote.logic;
+package org.easyvote.logic;
 
 import java.util.Comparator;
 
