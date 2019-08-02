@@ -1,6 +1,9 @@
 package org.easyvote.database;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Database {
 
@@ -169,7 +172,38 @@ public class Database {
 
 		return result;
 	}
-	
+
+	// Count all votes of normal voting
+	public HashMap<String, ArrayList<Integer>> countAllNormal() {
+
+		HashMap<String, ArrayList<Integer>> map = new HashMap<>();
+		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Positive, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Negative, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) NotPresent FROM all_votes GROUP BY atopic;";
+
+		try {
+			PreparedStatement prep = conn.prepareStatement(command);
+			prep.setString(1, Answers.Positive.toString());
+			prep.setString(2, Answers.Negative.toString());
+			prep.setString(3, Answers.NotPresent.toString());
+
+			ResultSet rs = prep.executeQuery();
+
+			while (rs.next()) {
+				ArrayList<Integer> currVotes = new ArrayList<>();
+
+				String topic = rs.getString("atopic");
+				currVotes.add(rs.getInt(Answers.Positive.toString()));
+				currVotes.add(rs.getInt(Answers.Negative.toString()));
+				currVotes.add(rs.getInt(Answers.NotPresent.toString()));
+
+				map.put(topic, currVotes);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return map;
+	}
 
 	// Give an id and get the real name of the client
 	public String getName(int id) {
