@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class Database {
 
 	private Connection conn;
@@ -39,9 +38,11 @@ public class Database {
 
 	// Does what it says
 	public void createTable() {
+
 		// All members of the meeting
 		String members = "CREATE TABLE IF NOT EXISTS members(id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(20))";
 
+		// Every single vote of the meeting
 		String allVotes = "CREATE TABLE IF NOT EXISTS all_votes ( id_vote INT AUTO_INCREMENT PRIMARY KEY, "
 				+ "id_member INT, name_member VARCHAR(20), vote VARCHAR(20) NOT NULL, "
 				+ "type_of_vote VARCHAR(10) NOT NULL, session VARCHAR(20) NOT NULL, topic VARCHAR(25) NOT NULL, "
@@ -177,9 +178,10 @@ public class Database {
 	public HashMap<String, ArrayList<Integer>> countAllNormal() {
 
 		HashMap<String, ArrayList<Integer>> map = new HashMap<>();
-		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Positive, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Negative, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) NotPresent FROM all_votes GROUP BY atopic;";
+		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Positive, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Negative, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) NotPresent FROM all_votes WHERE type_of_vote='Normal' GROUP BY atopic;";
 
 		try {
+
 			PreparedStatement prep = conn.prepareStatement(command);
 			prep.setString(1, Answers.Positive.toString());
 			prep.setString(2, Answers.Negative.toString());
@@ -187,15 +189,16 @@ public class Database {
 
 			ResultSet rs = prep.executeQuery();
 
+			// Get result from the prepared query
 			while (rs.next()) {
 				ArrayList<Integer> currVotes = new ArrayList<>();
 
-				String topic = rs.getString("atopic");
+				String currTopic = rs.getString("atopic");
 				currVotes.add(rs.getInt(Answers.Positive.toString()));
 				currVotes.add(rs.getInt(Answers.Negative.toString()));
 				currVotes.add(rs.getInt(Answers.NotPresent.toString()));
 
-				map.put(topic, currVotes);
+				map.put(currTopic, currVotes);
 			}
 
 		} catch (SQLException e) {
@@ -203,6 +206,36 @@ public class Database {
 		}
 
 		return map;
+	}
+
+	// Count all votes of presidential voting
+	// Searches every topic but only with ONE name and not every single one that
+	// exists, unlike countAllNormal
+	public HashMap<String, Integer> countAllPresidential(String name) {
+
+		HashMap<String, Integer> map = new HashMap<>();
+		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Votes FROM all_votes WHERE type_of_vote='Presidential' GROUP BY atopic;";
+
+		try {
+			PreparedStatement prep = conn.prepareStatement(command);
+			prep.setString(1, name);
+
+			ResultSet rs = prep.executeQuery();
+
+			while (rs.next()) {
+
+				String currTopic = rs.getString("atopic");
+				int currVotes = rs.getInt("votes");
+
+				map.put(currTopic, currVotes);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return map;
+
 	}
 
 	// Give an id and get the real name of the client
