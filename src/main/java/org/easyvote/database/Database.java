@@ -73,6 +73,27 @@ public class Database {
 
 	}
 
+	public void insertVote(int id, String vote, String typeOfVote, String session, String topic) {
+
+		try {
+
+			String insertVote = "INSERT INTO all_votes(id_member, name_member, vote, type_of_vote, session, topic) VALUES(?, (SELECT name FROM members WHERE members.id = ?), ?, ?, ?, ?)";
+
+			PreparedStatement statement = conn.prepareStatement(insertVote);
+			statement.setInt(1, id);
+			statement.setInt(2, id);
+			statement.setString(3, vote);
+			statement.setString(4, typeOfVote);
+			statement.setString(5, session);
+			statement.setString(6, topic);
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	// Insert a new person in the database
 	// This may require to return the id, so the member knows their id
 	public void insertMember(String name) {
@@ -87,6 +108,68 @@ public class Database {
 		}
 
 	}
+
+	// When there is no specified vote, it means that it's a normal voting with
+	// Positive, Negative and NotPresent answers
+	public int[] countOfVote(String topic) {
+
+		ResultSet rs = null;
+		int[] result = new int[3];
+		String commandCount = "SELECT COUNT(vote) as total FROM all_votes WHERE topic=? AND vote=?";
+
+		try {
+			PreparedStatement statement;
+			statement = conn.prepareStatement(commandCount);
+			statement.setString(1, topic);
+
+			statement.setString(2, Answers.Positive.toString());
+			rs = statement.executeQuery();
+			rs.next();
+			result[0] = rs.getInt("total");
+
+			statement.setString(2, Answers.Negative.toString());
+			rs = statement.executeQuery();
+			rs.next();
+			result[1] = rs.getInt("total");
+
+			statement.setString(2, Answers.NotPresent.toString());
+			statement.execute();
+			rs = statement.executeQuery();
+			rs.next();
+			result[2] = rs.getInt("total");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	// When vote is specified, it means that the method will return ONLY this
+	// specific vote and not Positive, Negative and NotPresent
+	public int countOfVote(String topic, String vote) {
+
+		int result = 0;
+		ResultSet rs = null;
+		String commandCount = "SELECT COUNT(vote) as total FROM all_votes WHERE topic=? AND vote=?";
+
+		try {
+			PreparedStatement statement;
+			statement = conn.prepareStatement(commandCount);
+			statement.setString(1, topic);
+
+			statement.setString(2, vote);
+			rs = statement.executeQuery();
+			rs.next();
+			result = rs.getInt("total");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
 
 	// Give an id and get the real name of the client
 	public String getName(int id) {
@@ -106,6 +189,10 @@ public class Database {
 
 		return null;
 
+	}
+
+	public enum Answers {
+		Positive, Negative, NotPresent;
 	}
 
 }
