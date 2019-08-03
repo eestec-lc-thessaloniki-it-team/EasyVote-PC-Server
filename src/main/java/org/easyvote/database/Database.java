@@ -58,6 +58,7 @@ public class Database {
 
 	}
 
+	// Insert an anonymous vote
 	public void insertVote(String vote, String typeOfVote, String session, String topic) {
 
 		try {
@@ -77,6 +78,7 @@ public class Database {
 
 	}
 
+	// Insert of not anonymous votes
 	public void insertVote(int id, String vote, String typeOfVote, String session, String topic) {
 
 		try {
@@ -99,7 +101,6 @@ public class Database {
 	}
 
 	// Insert a new person in the database
-	// This may require to return the id, so the member knows their id
 	public void insertMember(String name) {
 		String command = "INSERT INTO members(name) VALUES(?);";
 
@@ -114,7 +115,7 @@ public class Database {
 	}
 
 	// When there is no specified vote, it means that it's a normal voting with
-	// Positive, Negative and NotPresent answers
+	// Positive, Negative and Abstain answers
 	public int[] countOfVote(String topic) {
 
 		ResultSet rs = null;
@@ -136,7 +137,7 @@ public class Database {
 			rs.next();
 			result[1] = rs.getInt("total");
 
-			statement.setString(2, Answers.NotPresent.toString());
+			statement.setString(2, Answers.Abstain.toString());
 			statement.execute();
 			rs = statement.executeQuery();
 			rs.next();
@@ -150,7 +151,7 @@ public class Database {
 	}
 
 	// When vote is specified, it means that the method will return ONLY this
-	// specific vote and not Positive, Negative and NotPresent
+	// specific vote and not Positive, Negative and Abstain
 	public int countOfVote(String topic, String vote) {
 
 		int result = 0;
@@ -178,14 +179,14 @@ public class Database {
 	public HashMap<String, ArrayList<Integer>> countAllNormal() {
 
 		HashMap<String, ArrayList<Integer>> map = new HashMap<>();
-		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Positive, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Negative, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) NotPresent FROM all_votes WHERE type_of_vote='Normal' GROUP BY atopic;";
+		String command = "SELECT DISTINCT topic AS atopic, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Positive, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Negative, SUM(CASE WHEN vote=? THEN 1 ELSE 0 END) Abstain FROM all_votes WHERE type_of_vote='Normal' GROUP BY atopic;";
 
 		try {
 
 			PreparedStatement prep = conn.prepareStatement(command);
 			prep.setString(1, Answers.Positive.toString());
 			prep.setString(2, Answers.Negative.toString());
-			prep.setString(3, Answers.NotPresent.toString());
+			prep.setString(3, Answers.Abstain.toString());
 
 			ResultSet rs = prep.executeQuery();
 
@@ -196,7 +197,7 @@ public class Database {
 				String currTopic = rs.getString("atopic");
 				currVotes.add(rs.getInt(Answers.Positive.toString()));
 				currVotes.add(rs.getInt(Answers.Negative.toString()));
-				currVotes.add(rs.getInt(Answers.NotPresent.toString()));
+				currVotes.add(rs.getInt(Answers.Abstain.toString()));
 
 				map.put(currTopic, currVotes);
 			}
@@ -222,6 +223,7 @@ public class Database {
 
 			ResultSet rs = prep.executeQuery();
 
+			// Get result from the prepared query
 			while (rs.next()) {
 
 				String currTopic = rs.getString("atopic");
@@ -238,7 +240,7 @@ public class Database {
 
 	}
 
-	// Give an id and get the real name of the client
+	// Give an id and get the name of the client
 	public String getName(int id) {
 
 		String command = "SELECT name FROM members WHERE id=" + id;
@@ -259,7 +261,7 @@ public class Database {
 	}
 
 	public enum Answers {
-		Positive, Negative, NotPresent;
+		Positive, Negative, Abstain;
 	}
 
 }
