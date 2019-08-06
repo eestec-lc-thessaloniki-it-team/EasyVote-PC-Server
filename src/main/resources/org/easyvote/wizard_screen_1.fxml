@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +16,6 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="704.0" VBox.vgrow="ALWAYS">
       <children>
-            <ListView layoutX="14.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" />
             <Button layoutX="233.0" layoutY="92.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="&lt;-- Add" textAlignment="CENTER" />
             <Button layoutX="233.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Remove --&gt;" textAlignment="CENTER" />
             <Text layoutX="20.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Session:" textAlignment="CENTER" wrappingWidth="600.9830722808838">
@@ -51,6 +51,12 @@
                   </VBox>
                </children>
             </VBox>
+            <TableView layoutX="14.0" layoutY="92.0" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn prefWidth="101.0" text="Title" />
+                <TableColumn prefWidth="98.0" text="Type" />
+              </columns>
+            </TableView>
       </children>
     </AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="186.0">
