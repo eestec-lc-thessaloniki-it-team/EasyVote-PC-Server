@@ -43,6 +43,7 @@
                                     <Font size="20.0" />
                                  </font>
                               </Text>
+                              <TextField />
                            </children>
                         </VBox>
                         <VBox prefHeight="147.0" prefWidth="274.0">
@@ -67,7 +68,7 @@
                               </Text>
                               <RadioButton mnemonicParsing="false" prefHeight="33.0" prefWidth="274.0" text="Yes/No/Abstain" textAlignment="CENTER">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets bottom="10.0" />
@@ -75,12 +76,12 @@
                               </RadioButton>
                               <RadioButton mnemonicParsing="false" prefHeight="33.0" prefWidth="274.0" text="Multiple Choice" textAlignment="CENTER">
                                  <font>
-                                    <Font size="15.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </RadioButton>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Αdd Choice:" textAlignment="CENTER" wrappingWidth="273.9814453125">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -88,19 +89,19 @@
                               </Text>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <TextField prefHeight="25.0" prefWidth="237.0" />
-                                    <Button mnemonicParsing="false" text="Add" />
+                                    <TextField prefHeight="40.0" prefWidth="217.0" />
+                                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Add Choice" />
                                  </children>
                               </HBox>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Choices:" textAlignment="CENTER" wrappingWidth="273.9814453125">
                                  <font>
-                                    <Font size="18.0" />
+                                    <Font size="14.0" />
                                  </font>
                               </Text>
-                              <ListView maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="274.0" />
+                              <ListView maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="34.0" prefWidth="274.0" />
                               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Remove" />
+                                    <Button mnemonicParsing="false" text="Remove Choice" />
                                  </children>
                                  <VBox.margin>
                                     <Insets top="5.0" />
@@ -118,6 +119,15 @@
                            </font>
                         </Text>
                         <ListView prefHeight="200.0" prefWidth="200.0" />
+                        <VBox prefHeight="118.0" prefWidth="153.0" spacing="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Add Topic" />
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="181.0" text="Remove Topic" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
