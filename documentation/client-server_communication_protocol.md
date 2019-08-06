@@ -1,4 +1,4 @@
-- A Request JSON messsage has the following form:
+- A Request JSON message has the following form:
 	{
 		request : // (type of request is stated here, for example "INITIALIZE_NEW_CONNECTION")
 		data : {
