@@ -4,6 +4,8 @@ IT Team.
 
 This repository contains the Computer Based Server of the EasyVote application.
 
+[![Build Status](https://travis-ci.com/eestec-lc-thessaloniki-it-team/EasyVote-PC-Server.svg?branch=master)](https://travis-ci.com/eestec-lc-thessaloniki-it-team/EasyVote-PC-Server)
+
 
 ## FAQ
 ### Why is this a public repository?
