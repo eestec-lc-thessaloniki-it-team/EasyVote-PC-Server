@@ -17,6 +17,26 @@
 			<artifactId>json</artifactId>
 			<version>20180813</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/jakarta.websocket/jakarta.websocket-api -->
+		<dependency>
+			<groupId>jakarta.websocket</groupId>
+			<artifactId>jakarta.websocket-api</artifactId>
+			<version>1.1.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.glassfish.tyrus/tyrus-container-grizzly &ndash;&gt;&ndash;&gt;-->
+		<!--<dependency>-->
+			<!--<groupId>org.glassfish.tyrus</groupId>-->
+			<!--<artifactId>tyrus-container-grizzly</artifactId>-->
+			<!--<version>1.2.1</version>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.glassfish.tyrus/tyrus-server -->
+		<dependency>
+			<groupId>org.glassfish.tyrus</groupId>
+			<artifactId>tyrus-server</artifactId>
+			<version>1.15</version>
+		</dependency>
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
@@ -47,7 +67,7 @@
 			<plugin>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-maven-plugin</artifactId>
-				<version>0.0.2</version>
+				<version>0.0.3</version>
 				<configuration>
 					<mainClass>org.easyvote.App</mainClass>
 				</configuration>
