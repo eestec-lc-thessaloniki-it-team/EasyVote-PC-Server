@@ -19,7 +19,7 @@ public class WebsocketServer {
     public void stopServer() throws Exception{
         server.stop();
     }
-    
+
     //Broadcasts a message to all open connections
     public void broadcast(String json_string) throws Exception{
     	VoteServerEndpoint.broadcast(json_string);

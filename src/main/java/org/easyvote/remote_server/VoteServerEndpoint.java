@@ -12,7 +12,7 @@ import javax.websocket.server.ServerEndpoint;
 
 @ServerEndpoint( value = "/vote")
 public class VoteServerEndpoint {
-	
+
 	//A container that stores each open connection
 	private static Queue<Session> connections = new ConcurrentLinkedQueue<>();
 
@@ -36,7 +36,7 @@ public class VoteServerEndpoint {
     			break;
     		default:
     			//Send message
-    			session.getBasicRemote().sendText(responce);	
+    			session.getBasicRemote().sendText(responce);
     	}
     }
 
@@ -59,12 +59,12 @@ public class VoteServerEndpoint {
         	session.getBasicRemote().sendText(json_string);
         }
     }
-    
+
     //Returns all active connections
     public static Queue<Session> getConnections(){
     	return connections;
     }
-    
+
     private void closeConnection(Session session) {
     	try {
     		//Close the connection
@@ -75,4 +75,4 @@ public class VoteServerEndpoint {
     	//Remove connection from queue
     	connections.remove(session);
     }
-} 
+}
