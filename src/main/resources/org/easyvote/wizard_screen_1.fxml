@@ -16,7 +16,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="704.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button fx:id="addButton" layoutX="233.0" layoutY="92.0" mnemonicParsing="false" onAction="#addTopic" prefHeight="40.0" prefWidth="115.0" text="&lt;-- Add" textAlignment="CENTER" />
+            <Button fx:id="addButton" layoutX="233.0" layoutY="92.0" mnemonicParsing="false" onAction="#addSession" prefHeight="40.0" prefWidth="115.0" text="&lt;-- Add" textAlignment="CENTER" />
             <Button fx:id="RemoveButton" layoutX="233.0" layoutY="148.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="115.0" text="Remove --&gt;" textAlignment="CENTER" />
             <Text layoutX="20.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add new Session:" textAlignment="CENTER" wrappingWidth="600.9830722808838">
                <font>
