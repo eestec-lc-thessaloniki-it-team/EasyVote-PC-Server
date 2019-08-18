@@ -63,10 +63,28 @@ public class WizardScreen1Controller {
         System.out.println(titleInput.getText());
         System.out.println(typeInput.getText());
 
-        Session newSession = new Session(titleInput.getText(), typeInput.getText());
-        sessions.add(newSession);
+        String title = titleInput.getText();
+        String type = typeInput.getText();
 
-        sessionTable.setItems(sessions);
+        // check if title or type is empty
+        if (title.equals("") || type.equals("")) {
+            // notify user?
+        } else {
+            Session newSession = new Session(title, type);
+            sessions.add(newSession);
+
+            sessionTable.setItems(sessions);
+
+            // empty the title and type input fields
+            titleInput.clear();
+            typeInput.clear();
+        }
+    }
+
+    @FXML
+    private void removeSession() {
+        Session selectedSession = sessionTable.getSelectionModel().getSelectedItem();
+        sessionTable.getItems().remove(selectedSession);
     }
 
     @FXML
