@@ -9,11 +9,10 @@ public class VoteManagement {
   private ArrayList<HandRuleRequest> requests = new ArrayList<>();
   private HandRules handRules = new HandRules();
 
-  public void createVotingSession(String typeOfSession) {
-    // typeOfSession determines the kind of voting that will take place during
+  public void addVotingSession(String title, String type) {
+    // type determines the kind of voting that will take place during
     // the session. For example, ROP votes that require yes/no answers, Board
-    // Elections
-    // that require name answers etc.
+    // Election that require name answers etc.
 
   }
 

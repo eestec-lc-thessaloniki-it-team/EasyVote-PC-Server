@@ -3,7 +3,7 @@ package org.easyvote.logic;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VotingTopic {
+public class Topic {
 
   private String topicDescription;
 
